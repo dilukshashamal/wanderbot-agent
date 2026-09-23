@@ -1,0 +1,192 @@
+[
+  {
+    "hotel_id": "HTL-FCO-001",
+    "name": "Hotel Artemide",
+    "city": "Rome",
+    "city_code": "FCO",
+    "country": "Italy",
+    "address": "Via Nazionale 22, 00184 Rome, Italy",
+    "rating": 4.8,
+    "price_per_night": 210.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Rooftop Lounge",
+      "Spa & Wellness",
+      "Breakfast Included",
+      "Fitness Center"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-FCO-002",
+    "name": "Pantheon Iconic Rome Hotel",
+    "city": "Rome",
+    "city_code": "FCO",
+    "country": "Italy",
+    "address": "Via di Santa Chiara 4/6, 00186 Rome, Italy",
+    "rating": 4.7,
+    "price_per_night": 245.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Rooftop Terrace",
+      "Fine Dining Restaurant",
+      "Air Conditioning",
+      "Concierge Service"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-FCO-003",
+    "name": "Trastevere Boutique Haven",
+    "city": "Rome",
+    "city_code": "FCO",
+    "country": "Italy",
+    "address": "Vicolo del Bologna 18, 00153 Rome, Italy",
+    "rating": 4.5,
+    "price_per_night": 135.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Courtyard Garden",
+      "Kitchenette",
+      "Airport Shuttle",
+      "Pet Friendly"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-BCN-001",
+    "name": "Hotel Arts Barcelona",
+    "city": "Barcelona",
+    "city_code": "BCN",
+    "country": "Spain",
+    "address": "Carrer de la Marina 19-21, 08005 Barcelona, Spain",
+    "rating": 4.8,
+    "price_per_night": 285.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Outdoor Pool",
+      "Spa & Beauty Centre",
+      "Beachfront Access",
+      "Michelin-starred Dining"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-BCN-002",
+    "name": "Gothic Quarter Grand Hotel",
+    "city": "Barcelona",
+    "city_code": "BCN",
+    "country": "Spain",
+    "address": "Carrer de Jaume I 14, 08002 Barcelona, Spain",
+    "rating": 4.6,
+    "price_per_night": 175.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Rooftop Pool",
+      "Historic Architecture",
+      "Breakfast Included",
+      "Cocktail Bar"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-BCN-003",
+    "name": "Ramblas Central Suites",
+    "city": "Barcelona",
+    "city_code": "BCN",
+    "country": "Spain",
+    "address": "La Rambla 88, 08002 Barcelona, Spain",
+    "rating": 4.3,
+    "price_per_night": 120.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "City View Balcony",
+      "Air Conditioning",
+      "24-Hour Front Desk",
+      "Elevator"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-PAR-001",
+    "name": "Le Marais Elegance Hotel",
+    "city": "Paris",
+    "city_code": "CDG",
+    "country": "France",
+    "address": "Rue Saint-Antoine 45, 75004 Paris, France",
+    "rating": 4.9,
+    "price_per_night": 295.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Spa & Hamam",
+      "Courtyard Cafe",
+      "Breakfast Included",
+      "Airport Chauffeur"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-PAR-002",
+    "name": "Hotel Eiffel Rive Gauche",
+    "city": "Paris",
+    "city_code": "CDG",
+    "country": "France",
+    "address": "Rue du Champ de Mars 6, 75007 Paris, France",
+    "rating": 4.4,
+    "price_per_night": 165.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Eiffel Tower Views",
+      "Wine Bar",
+      "Air Conditioning",
+      "Luggage Storage"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-TYO-001",
+    "name": "Shinjuku Skyline Luxury Hotel",
+    "city": "Tokyo",
+    "city_code": "HND",
+    "country": "Japan",
+    "address": "Kabukicho 1-30-1, Shinjuku, Tokyo, Japan",
+    "rating": 4.8,
+    "price_per_night": 230.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Sky High Panoramic Bar",
+      "Traditional Onsen Spa",
+      "Fitness Center",
+      "Subway Direct Access"
+    ],
+    "status": "Available"
+  },
+  {
+    "hotel_id": "HTL-TYO-002",
+    "name": "Shibuya Stream Modern Stay",
+    "city": "Tokyo",
+    "city_code": "HND",
+    "country": "Japan",
+    "address": "Shibuya 3-21-3, Shibuya, Tokyo, Japan",
+    "rating": 4.5,
+    "price_per_night": 180.0,
+    "currency": "USD",
+    "amenities": [
+      "Free Wi-Fi",
+      "Smart Room Controls",
+      "Craft Beer Restaurant",
+      "Coworking Space",
+      "24-Hour Front Desk"
+    ],
+    "status": "Available"
+  }
+]
