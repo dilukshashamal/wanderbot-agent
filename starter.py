@@ -1,12 +1,20 @@
 import json
 from pathlib import Path
-
+from bedrock_agentcore.memory import MemoryClient
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from strands import Agent, tool
+from strands.hooks import (
+    AgentInitializedEvent,
+    HookProvider,
+    HookRegistry,
+    MessageAddedEvent,
+)
 from strands.models import BedrockModel
 from strands_tools import calculator, current_time
 
 app = BedrockAgentCoreApp()
+REGION = "us-east-1"
+MEMORY_ID = "WanderBot-jIy3mvHQUb"
 model = BedrockModel(model_id="us.amazon.nova-2-lite-v1:0")
 
 DATASETS_DIR = Path(__file__).resolve().parent / "datasets"
@@ -129,13 +137,77 @@ Follow these guidelines:
 """
 
 
+class ShortTermMemoryHookProvider(HookProvider):
+    def __init__(self, memory_client: MemoryClient, memory_id: str, last_k_turns: int = 5):
+        self.memory_client = memory_client
+        self.memory_id = memory_id
+        self.last_k_turns = last_k_turns
+
+    def register_hooks(self, registry: HookRegistry) -> None:
+        registry.add_callback(AgentInitializedEvent, self.on_agent_initialized)
+        registry.add_callback(MessageAddedEvent, self.on_message_added)
+
+    def on_agent_initialized(self, event: AgentInitializedEvent) -> None:
+        actor_id = event.agent.state.get("actor_id")
+        session_id = event.agent.state.get("session_id")
+        if not actor_id or not session_id:
+            return
+
+        try:
+            turns = self.memory_client.get_last_k_turns(
+                memory_id=self.memory_id,
+                actor_id=actor_id,
+                session_id=session_id,
+                k=self.last_k_turns,
+            )
+            if not turns:
+                return
+
+            for turn in reversed(turns):
+                for msg in turn:
+                    role = msg.get("role", "").lower()
+                    text = msg.get("content", {}).get("text", "")
+                    if role and text:
+                        event.agent.messages.append({
+                            "role": role,
+                            "content": [{"text": text}],
+                        })
+        except Exception:
+            pass
+
+    def on_message_added(self, event: MessageAddedEvent) -> None:
+        actor_id = event.agent.state.get("actor_id")
+        session_id = event.agent.state.get("session_id")
+        if not actor_id or not session_id:
+            return
+
+        content = event.message.get("content", [])
+        text = content[0].get("text") if content and isinstance(content[0], dict) else None
+        if not text:
+            return
+
+        self.memory_client.create_event(
+            memory_id=self.memory_id,
+            actor_id=actor_id,
+            session_id=session_id,
+            messages=[(text, event.message.get("role", "").upper())],
+        )
+
+
 @app.entrypoint
 async def invoke(payload: dict, context=None):
     user_message = payload.get("message") or payload.get("prompt") or "Hello!"
+    session_id = getattr(context, "session_id", None) or payload.get("session_id", "wanderbot-session")
+    actor_id = payload.get("actor_id", "wanderbot-user")
+
+    memory_client = MemoryClient(region_name=REGION)
+
     agent = Agent(
         model=model,
         system_prompt=SYSTEM_PROMPT,
         tools=[calculator, current_time, search_flights, search_hotels, get_exchange_rate],
+        hooks=[ShortTermMemoryHookProvider(memory_client, MEMORY_ID)],
+        state={"session_id": session_id, "actor_id": actor_id},
     )
     return agent(user_message)
 
